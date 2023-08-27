@@ -1,0 +1,33 @@
+/*
+ * TIMER0_INT.c
+ *
+ * Created: 8/24/2023 6:55:52 AM
+ *  Author: Ahmed ElSayed
+ */ 
+
+#include "TIMER_INT.h"
+
+void INT_TIMER0_Init(){
+	SET_GlobalInterrupt();
+	
+	#if	TIMER0_INT_MODE == TIMER0_INT_OV
+	
+	SET_BIT(TIMER_I_MASK_R, TIMER0_OV_MASK_BIT);
+	CLEAR_BIT(TIMER_I_MASK_R, TIMER0_OC_MASK_BIT);
+	
+	#elif TIMER0_INT_MODE == TIMER0_INT_OC
+	
+	SET_BIT(TIMER_I_MASK_R, TIMER0_OC_MASK_BIT);
+	CLEAR_BIT(TIMER_I_MASK_R, TIMER0_OV_MASK_BIT);
+	
+	#elif TIMER0_INT_MODE == BOTH_OC_OV
+	
+	SET_BIT(TIMER_I_MASK_R, TIMER0_OC_MASK_BIT);
+	SET_BIT(TIMER_I_MASK_R, TIMER0_OC_MASK_BIT);
+	
+	#else
+	
+	#error "Invalid Interrupt mode!"
+	
+	#endif
+}
