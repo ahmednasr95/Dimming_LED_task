@@ -104,7 +104,7 @@ Disassembly of section .text:
 Disassembly of section .text:
 
 00000316 <__bad_interrupt>:
- 316:	0c 94 00 00 	jmp	0	; 0x0 <__TEXT_REGION_ORIGIN__>
+ 316:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 Disassembly of section .text.test_TIMER:
 
@@ -120,7 +120,7 @@ void test_TIMER(){
  302:	41 e0       	ldi	r20, 0x01	; 1
  304:	63 e0       	ldi	r22, 0x03	; 3
  306:	81 e0       	ldi	r24, 0x01	; 1
- 308:	0e 94 36 00 	call	0x6c	; 0x6c <__data_load_end>
+ 308:	0e 94 36 00 	call	0x6c	; 0x6c <_etext>
  30c:	08 95       	ret
 
 Disassembly of section .text.main:
@@ -135,7 +135,7 @@ int main(void)
  230:	41 e0       	ldi	r20, 0x01	; 1
  232:	65 e0       	ldi	r22, 0x05	; 5
  234:	80 e0       	ldi	r24, 0x00	; 0
- 236:	0e 94 36 00 	call	0x6c	; 0x6c <__data_load_end>
+ 236:	0e 94 36 00 	call	0x6c	; 0x6c <_etext>
 	DIO_SetPinVal(DIO_PORTA, DIO_PIN5, DIO_PIN_HIGH);
  23a:	41 e0       	ldi	r20, 0x01	; 1
  23c:	65 e0       	ldi	r22, 0x05	; 5
